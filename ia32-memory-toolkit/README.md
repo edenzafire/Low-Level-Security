@@ -1,143 +1,103 @@
-## 🕵️  IA-32 Low-Level Toolkit
+# 🕵️ IA-32 Low-Level Toolkit
+![Assembly](https://img.shields.io/badge/Language-Assembly_x86-blue)
+![Platform](https://img.shields.io/badge/Platform-Linux_Debian-red)
 
-Low-level memory inspection toolkit written in IA-32 Assembly (x86 32-bit).
+Low-level memory inspection toolkit written in **IA-32 Assembly (x86 32-bit)**. 
 
-This repository contains exercises, experiments and tooling developed during my studies of IA-32 architecture, stack frames, memory addressing modes and debugging workflows.
+This repository contains exercises, experiments, and tooling developed during my studies of IA-32 architecture, stack frames, memory addressing modes, and debugging workflows on a ThinkPad E470 running Debian 12.
 
+---
+
+## 🚀 Key Features & Learning Focus
 The project demonstrates practical usage of:
-
-* stack frame construction (EBP / ESP)
-* pointer walking (ESI / EDI)
-* loop control using ECX
-* string instructions (LODSB / STOSB)
-* conditional branching
-* calling convention via stack parameters
-* byte-level memory inspection
-* ASCII classification
-* hex dump engine implementation
-* debugging with GDB
+* **Stack Frame Construction:** Manual handling of `EBP` and `ESP`.
+* **Pointer Walking:** Memory traversal using `ESI` and `EDI`.
+* **Calling Conventions:** Implementation of the `cdecl` convention via stack.
+* **Endianness Analysis:** Practical visualization of physical vs. logical memory storage.
+* **Advanced Debugging:** Deep dives using **GDB** (GNU Debugger).
 
 ---
 
-## Course Reference
-
-This repository is based on the following academic training:
-
-Course:
-IA-32 Assembly Programming and Computer Architecture
-
-Provider:
-NOU INTUIT (Independent Non-Commercial Educational Organization "INTUIT")
-
-Course link:
-https://intuit.ru/studies/courses/3537/779/info
-
-This coursework is part of my structured training path in:
-
-* low-level programming
-* reverse engineering foundations
-* exploit development preparation
-* memory analysis workflows
+## 📖 Deep Dive Write-ups (Gynvael Coldwind Style)
+To understand the research mindset behind this project, check out the detailed technical reports:
+👉 [**Technical Write-up: Internal Mechanics of the Engine**](writeups/01-ia32-memory-dumping.md)
 
 ---
 
-## Certificate
+## 🖼️ Execution & Results
 
-The certificate issued after course completion is included in this directory:
+### Example Output
+The hexdump engine processing strings and numeric values in the laboratory environment:
 
- **Certificado em Russo**  [certificateRu.jpg](https://github.com/edenzafire/Low-Level-Security/blob/main/ia32-memory-toolkit/docs/certificateRu.jpg)
- **Certificado em Inglês** [certificateIn.jpg](https://github.com/edenzafire/Low-Level-Security/blob/main/ia32-memory-toolkit/docs/certificateIn.jpg)
+![Execution Demo](screenshots/execution_demo.png)
 
-This certificate is also referenced in my CV as supporting evidence of IA-32 architecture training.
+### Endianness Visualization (Intel IA-32)
+Observe how the logical hexadecimal value `0x12345678` is physically displayed:
+`78 56 34 12`
 
----
-
-## Repository Structure
-
-ia32-lowlevel-toolkit/
-
-src/
-Assembly source files
-
-docs/
-course certificate and technical notes
-
-gdb/
-debugging sessions and register inspection walkthroughs
-
-screenshots/
-execution output examples
-
-writeups/
-technical documentation and reverse-engineering style explanations
+> **Insight:** This demonstrates the **Little-Endian** pattern, where the Least Significant Byte (LSB) is stored at the lowest memory address. 
 
 ---
 
-## Implemented Components
+## 🏗️ Repository Structure
 
-Current toolkit modules:
-
-hex_ascii_dump()
-Memory traversal and byte visualization engine
-
-print_ascii()
-ASCII printable range detection helper
-
-string analyzer (planned extension)
-character classification engine
+* **`src/`**: IA-32 Assembly source files.
+* **`docs/`**: Course certificates (INTUIT) and technical study notes.
+* **`gdb/`**: Debugging session logs and register inspection guides.
+* **`screenshots/`**: Visual examples of execution and memory analysis.
+* **`writeups/`**: Detailed documentation and reverse-engineering style explanations.
 
 ---
 
-## Example Output
+## 🛠️ Implemented Components
 
----[ IA32 MEMORY DUMP ]---
-OFFSET    HEX DATA                                 ASCII
-00000000  50 6f 72 74 66 6f 6c 2d 4c 69 6e 75 78    | Portfol-Linux
-00000000  78 56 34 12                               | xV4.
+* **`hex_ascii_dump()`**: Memory traversal and byte visualization engine.
+* **`print_ascii()`**: Helper for printable ASCII character detection (security filters).
+* **`string analyzer`**: (Planned extension) Character classification engine.
+
 ---
 
-## Key Technical Insights
+## 💻 How to Build and Run
 
-*Endianness Visualization*
-
-A crucial part of this project is demonstrating Little-Endian memory storage.
-
-Observation: Notice that the hex value 0x12345678 is displayed as 78 56 34 12.
-
-Concept: In IA-32 architecture, the Least Significant Byte (LSB) is stored at the lowest memory address. This project serves as a practical demonstration of this discrepancy between human-readable hexadecimal and its physical representation in Intel-based systems.
-
-## How to Build and Run
-
-To compile on a 64-bit Linux system (like Debian/Ubuntu), you need `gcc-multilib`:
+To compile on 64-bit Linux systems (like Debian/Ubuntu), you will need `gcc-multilib`:
 
 ```bash
-# Compile
-gcc -m32 -no-pie src/hexdump_toolkit.s -o hexdump_toolkit
-```
+# 1. Install dependencies
+sudo apt install gcc-multilib gdb -y
 
-# Run
+# 2. Compile (IA-32, No-PIE for fixed addresses)
+gcc -m32 -no-pie src/hexdump_toolkit.s -o hexdump_toolkit
+
+# 3. Execute
 ./hexdump_toolkit
 
-## Technical Focus
+```
+---
 
-This project emphasizes understanding of:
+## 🎓 Academic Reference
 
-IA-32 calling conventions
-stack-based parameter passing
-register-level memory traversal
-low-level debugging workflows
-assembly-based tooling development
+This project was developed as part of my structured learning path in computer architecture and systems security.
+
+* **Course:** IA-32 Assembly Programming and Computer Architecture
+* **Provider:** NOU INTUIT (Independent Non-Commercial Educational Organization "INTUIT")
+* **Status:** Completed / Certified
+* **Focus:** Low-level programming, memory management, and hardware-software interface.
+
+🔗 [Official Course Link](https://intuit.ru/studies/courses/3537/779/info)
+
+### **Verification & Certification**
+The certificates issued upon successful completion are available for verification:
+* 📜 [Russian Version (Original)](docs/certificateRu.jpg)
+* 📜 [English Version (Translated)](docs/certificateIn.jpg)
 
 ---
 
-## Author
+## 👨‍💻 Author
 
-Zafire Daniel
+**Zafire Daniel** *Cybersecurity Student & Low-level Enthusiast* Dedicated to mastering the internals of computing systems to better understand software security and vulnerability research. My current focus includes:
+* **Reverse Engineering:** Analyzing binary behavior and control flow.
+* **Memory Analysis:** Building tooling for forensic and security inspections.
+* **Assembly Internals:** Writing efficient and secure code at the architecture level.
 
-Low-level security engineering student focused on:
-
-reverse engineering
-memory inspection tooling
-assembly internals
-system-level debugging
-
+---
+*Generated by Zafire's Security Lab - 2026*
