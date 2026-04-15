@@ -4,7 +4,7 @@
 
 Low-level memory inspection toolkit written in **IA-32 Assembly (x86 32-bit)**. 
 
-This repository contains exercises, experiments, and tooling developed during my studies of IA-32 architecture, stack frames, memory addressing modes, and debugging workflows on a ThinkPad E470 running Debian 12.
+This repository contains exercises, experiments, and tooling developed during my studies of IA-32 architecture, stack frames, memory addressing modes, and debugging workflows on a ThinkPad E470 running Ubuntu 24.4.
 
 ---
 
@@ -87,8 +87,8 @@ This project was developed as part of my structured learning path in computer ar
 
 ### **Verification & Certification**
 The certificates issued upon successful completion are available for verification:
-* 📜 [Russian Version (Original)](docs/certificateRu.jpg)
-* 📜 [English Version (Translated)](docs/certificateIn.jpg)
+* 📜![Russian Version (Original)](docs/certificateRu.jpg)
+* 📜![English Version (Translated)](docs/certificateIn.jpg)
 
 ---
 
