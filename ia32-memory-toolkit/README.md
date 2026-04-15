@@ -1,4 +1,4 @@
-# IA-32 Low-Level Toolkit
+## 🕵️  IA-32 Low-Level Toolkit
 
 Low-level memory inspection toolkit written in IA-32 Assembly (x86 32-bit).
 
@@ -45,7 +45,8 @@ This coursework is part of my structured training path in:
 
 The certificate issued after course completion is included in this directory:
 
-docs/certificateRu.jpg  &&  certificateIn.jpg
+ **Certificado em Russo**  [certificateRu.jpg](https://github.com/edenzafire/Low-Level-Security/blob/main/ia32-memory-toolkit/docs/certificateRu.jpg)
+ **Certificado em Inglês** [certificateIn.jpg](https://github.com/edenzafire/Low-Level-Security/blob/main/ia32-memory-toolkit/docs/certificateIn.jpg)
 
 This certificate is also referenced in my CV as supporting evidence of IA-32 architecture training.
 
