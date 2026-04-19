@@ -44,4 +44,4 @@ Este repositório segue a mentalidade **"Learning by Doing"**. Acredito que a me
 Sinta-se à vontade para explorar os códigos. Se você é um entusiasta de arquitetura de computadores ou segurança, feedbacks e discussões sobre otimizações são sempre bem-vindos via **Issues** ou **Pull Requests**.
 
 ---
-**Desenvolvido por [Seu Nome/Nick]** [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/edenzafire/)
+**Desenvolvido por [Éden Zafire]** [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/edenzafire/)
