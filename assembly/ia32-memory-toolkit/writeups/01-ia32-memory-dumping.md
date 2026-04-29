@@ -40,7 +40,7 @@ This observation confirms the Little-Endian nature of the Intel IA-32 architectu
 Verification of byte swapping in physical memory (0x12345678 -> 78 56 34 12).
 ![Endianness Analysis](../screenshots/03-memory-endianness-analysis.png)
 
-## 0x04: Debugging with GDB (The "Coldwind" Way)
+## 0x04: Debugging with GDB 
 A security researcher does not trust the code; they verify its behavior. Following the methodology of researchers like Gynvael Coldwind, I used GDB to inspect the stack frame during live execution.
 
 Snippet de código

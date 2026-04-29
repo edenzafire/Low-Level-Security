@@ -18,7 +18,7 @@ The project demonstrates practical usage of:
 
 ---
 
-## 📖 Deep Dive Write-ups (Gynvael Coldwind Style)
+## 📖 Deep Dive Write-ups 
 To understand the research mindset behind this project, check out the detailed technical reports:
 👉 [**Technical Write-up: Internal Mechanics of the Engine**](writeups/01-ia32-memory-dumping.md)
 
