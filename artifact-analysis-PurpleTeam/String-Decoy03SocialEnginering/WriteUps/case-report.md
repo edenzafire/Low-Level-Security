@@ -14,9 +14,9 @@ This report details the technical analysis of a stealthy stage-1 loader utilized
 
 ⚔️ Purple Team Lifecycle Bridges
 
-🔴 Offensive Operations (Red Team): Phishing Campaign Implementation & Payload Delivery
+🔴 [Offensive Operations (Red Team):](https://github.com/edenzafire/Red_Team_Repo/tree/main/03_Social_Engineering) Phishing Campaign Implementation & Payload Delivery
 
-🔵 Defensive Operations (Blue Team): Detection Engineering & CrowdSec Active Response Lab
+🔵 [Defensive Operations (Blue Team):](https://github.com/edenzafire/Blue_Team_Repo/tree/main/03_Identity_Access_Management_IAM) Detection Engineering & CrowdSec Active Response Lab
 
 The artifact was engineered as a dual-purpose payload: delivering an encrypted 64-bit Meterpreter shellcode via native Windows APIs while evading automated heuristic detection mechanisms. The simulation follows a strict Purple Team workflow, analyzing the offensive evasion vectors to optimize defensive infrastructure (CrowdSec containerized stack).
 
