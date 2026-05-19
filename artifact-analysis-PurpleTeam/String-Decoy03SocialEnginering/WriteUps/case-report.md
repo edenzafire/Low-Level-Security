@@ -8,15 +8,26 @@
 
 ---
 
-## EXECUTIVE SUMMARY
+### EXECUTIVE SUMMARY
 
-This report details the technical analysis of a stealthy stage-1 loader utilized during a simulated social engineering campaign themed around historical flamenco luthiery (*"Medidas Paco De Lucía 1971"*). 
+This report details the technical analysis of a stealthy stage-1 loader utilized during a simulated social engineering campaign themed around historical flamenco luthiery ("Medidas Paco De Lucía 1971").
 
-[**RedTem** ](https://github.com/edenzafire/Red_Team_Repo/tree/main/03_Social_Engineering)
+⚔️ Purple Team Lifecycle Bridges
 
-The artifact was engineered as a dual-purpose payload: delivering an encrypted **64-bit Meterpreter shellcode** via native Windows APIs while evading automated heuristic detection mechanisms. The simulation follows a strict Purple Team workflow, analyzing the offensive evasion vectors to optimize defensive infrastructure (CrowdSec containerized stack).
+🔴 Offensive Operations (Red Team): Phishing Campaign Implementation & Payload Delivery
 
-[Social Engineering Bait] ---> [Spoofed Artifact (.exe)] ---> [Heuristic Evasion / Delay] | [Established Reverse Shell] <-- [Dynamic Memory XOR Decryption] <-----+
+🔵 Defensive Operations (Blue Team): Detection Engineering & CrowdSec Active Response Lab
+
+The artifact was engineered as a dual-purpose payload: delivering an encrypted 64-bit Meterpreter shellcode via native Windows APIs while evading automated heuristic detection mechanisms. The simulation follows a strict Purple Team workflow, analyzing the offensive evasion vectors to optimize defensive infrastructure (CrowdSec containerized stack).
+
+[Social Engineering Bait] 
+          │
+          ▼
+[Spoofed Artifact (.exe)] ────► [Heuristic Evasion / Delay]
+                                             │
+                                             ▼
+[Established Reverse Shell] ◄─── [Dynamic Memory XOR Decryption]
+
 
 ---
 
