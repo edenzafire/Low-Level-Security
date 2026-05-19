@@ -20,7 +20,7 @@ The artifact was engineered as a dual-purpose payload: delivering an encrypted *
 
 ---
 
-## 1. STATIC TRIAGE & ARCHITECTURAL RECONNAISSANCE
+## 0x01. STATIC TRIAGE & ARCHITECTURAL RECONNAISSANCE
 
 Initial static verification was conducted to determine file integrity, headers, and compiled imports before execution.
 
@@ -44,11 +44,11 @@ $ xxd Medidas_Paco_De_Lucia_Oficial_1971.exe | head -n 1
 
 > **Evidence Link:** 
 
-![screenshots](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/02xxd.png)
+ ![screenshots](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/02xxd.png)
 
 Hexadecimal validation confirms the standard DOS header magic bytes **`4d5a`** (`MZ`), mapping the entry point structure of a true executable file rather than a raw documentation format.
 
-### 1.1. Import Table Inspection (`rabin2`)
+### 0x01.1. Import Table Inspection (`rabin2`)
 
 Bash
 
@@ -58,9 +58,9 @@ $ rabin2 -i Medidas_Paco_De_Lucia_Oficial_1971.exe
 
 > **Evidences Link:**
 
-![screenshots1}(https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/03rabin.png)
+ ![screenshots1](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/03rabin.png)
 
-![screenshots2](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/04rabin.png)
+ ![screenshots2](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/04rabin.png)
 
 The extraction of imported APIs via `rabin2` highlighted critical primitives typically leveraged in process injection and memory-resident malware execution:
 
@@ -75,7 +75,7 @@ The extraction of imported APIs via `rabin2` highlighted critical primitives typ
 - **`SHELL32.dll!ShellExecuteA`**: Capable of spawning the legitimate decoy process.
     
 
-### 1.2. Embedded String Analysis
+### 0x01.2. Embedded String Analysis
 
 Bash
 
@@ -84,11 +84,12 @@ $ rabin2 -z Medidas_Paco_De_Lucia_Oficial_1971.exe
 ```
 
 > **Evidence Link:** 
-![screenshots5](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/05rabin2.png
+ ![screenshots5](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/05rabin2.png)
 
-![screenshots6](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/06rabin2.png)
+ ![screenshots6](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/06rabin2.png)
 
-![screenshots7](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/07rabin2.png
+ ![screenshots7](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/07rabin2.png)
+
 The string table exposed two crucial elements inside the `.rdata` section:
 
 1. Virtualization drivers strings (`C:\windows\System32\Drivers\Vmmouse.sys`, `VBoxGuest.sys`) matching specific heuristic signatures designed for **Anti-Sandbox / VM Detection**.
@@ -98,7 +99,7 @@ The string table exposed two crucial elements inside the `.rdata` section:
 
 ---
 
-## 2. LOW-LEVEL STATIC ANALYSIS (RADARE2)
+## 0x02. LOW-LEVEL STATIC ANALYSIS (RADARE2)
 
 The binary was loaded into `radare2` executing a full analysis flags iteration (`aa`).
 
@@ -115,13 +116,13 @@ $ r2 -A Medidas_Paco_De_Lucia_Oficial_1971.exe
 ```
 
 > **Evidence Link:** 
-![screenshots8](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/08radare.png)
+ ![screenshots8](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/08radare.png)
 
-![screenshots9](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/09radare.png)
+ ![screenshots9](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/09radare.png)
 
 The core function table mapping isolates **`fcn.140001180`** as the main functional controller of the loader, executing immediately after the initial runtime initialization stub (`entry0`).
 
-### 2.1. Disassembling the Loader Entry Point
+### 0x02.1. Disassembling the Loader Entry Point
 
 Snippet de código
 
@@ -131,9 +132,9 @@ Snippet de código
 ```
 
 > **Evidence Link:**
-![screenshots10](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/10pdf.png)
+ ![screenshots10](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/10pdf.png)
 
-![screenshots11](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/11pdf.png)
+ ![screenshots11](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/11pdf.png)
 
 !(screenshots12](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/12pdf.png)
 
@@ -153,7 +154,7 @@ Snippet de código
 
 The function prologue establishes a standard stack frame reserving `0x90` bytes. Crucially, the pointer to `KERNEL32.dll!Sleep` is loaded into the **`r12`** register at address `0x1400011c8`.
 
-### 2.2. Tracking Control Flow Obstruction (`pif`)
+### 0x02.2. Tracking Control Flow Obstruction (`pif`)
 
 To evaluate how the loader hides its critical calls from automated runtime inspection, the program flow was queried for indirect execution branches:
 
@@ -167,11 +168,11 @@ Snippet de código
 
 > **Evidence Link:** 
 
-![screenshots13](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/13pdf.png)
+ ![screenshots13](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/13pdf.png)
 
-![screenshots14](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/14pdf.png)
+ ![screenshots14](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/14pdf.png)
 
-![screenshots15](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/15pif.png)
+ ![screenshots15](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/15pif.png)
 
 
 Snippet de código
@@ -185,7 +186,7 @@ The execution flow reveals an obfuscated loop pattern. Instead of issuing a sing
 
 ---
 
-## 3. RUNTIME ANALYSIS & MEMORY INSPECION (GDB)
+## 0x03. RUNTIME ANALYSIS & MEMORY INSPECION (GDB)
 
 To completely bypass the anti-analysis delays and catch the un-obfuscated shellcode, a cross-compiled Linux binary version of the loader (`veneno_linux.bin`) was analyzed using the **GNU Debugger (GDB)**.
 
@@ -199,9 +200,9 @@ $ gdb ./veneno_linux.bin
 
 > **Evidence Link:** 
 
-![screenshots16](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/16gdbini.png)
+ ![screenshots16](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/16gdbini.png)
 
-![screenshots18](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/18gdb.png)
+ ![screenshots18](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/18gdb.png)
 
 The breakpoint successfully halted execution at the signature XOR loop entry point:
 
@@ -221,7 +222,7 @@ The debugger extracts the precise configuration parameters in runtime:
 - **`key`** (XOR Obfuscation Key): `119` (Decimal) -> **`0x77`** (Hexadecimal)
     
 
-### 3.1. Pre-Decryption RAM State
+### 0x03.1. Pre-Decryption RAM State
 
 Before loop processing, the raw memory area was dumped to inspect the high-entropy state:
 
@@ -236,14 +237,14 @@ Plaintext
 
 > **Evidence Link:** 
 
-![screenshots17](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/17gdb20xb.png)
+ ![screenshots17](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/17gdb20xb.png)
 
-![screenshots19](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/19ggdb.png)
+ ![screenshots19](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/19ggdb.png)
 
 
 The memory contents verify complete obfuscation, starting with the random byte sequence `0x8b 0x3f 0xf4`. Notably, bytes 7, 8, and 9 are identified as **`0x77 0x77 0x77`**.
 
-### 3.2. Post-Decryption State & Signature Carving
+### 0x03.2. Post-Decryption State & Signature Carving
 
 The function was forced to run until completion using the `finish` routine, popping the execution stack right after the loop unrolled:
 
@@ -260,7 +261,7 @@ Run till exit from #0  decrypt (...) at veneno_linux.cpp:47
 
 > **Evidence Link:** 
 
-![screenshots20](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/20gdbfinish.png)
+ ![screenshots20](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/20gdbfinish.png)
 
 The memory inspection reveals a critical, definitive mutation:
 
@@ -280,7 +281,7 @@ This confirms the presence of an active **Metasploit Framework (Meterpreter) Win
 
 ---
 
-## 4. GRAPH CONTROL FLOW VALIDATION (GHIDRA)
+## 0x04. GRAPH CONTROL FLOW VALIDATION (GHIDRA)
 
 To map out the execution tree and validate the logic paths of the compiled PE file, the artifact was imported into the Ghidra CodeBrowser suite.
 
@@ -290,11 +291,11 @@ To map out the execution tree and validate the logic paths of the compiled PE fi
 
 > **Evidence Link:** 
 
-![screenshots21](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/21Ghidra01.png)
+ ![screenshots21](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/21Ghidra01.png)
 
 The decompiler output tracks the initialization vectors, confirming that the standard `entry` structure hands over control execution to **`FUN_140001180`**, bypassing traditional runtime traps.
 
-### 4.1. Pseudo-Code Correlative Decompilation
+### 0x04.1. Pseudo-Code Correlative Decompilation
 
 C++
 
@@ -312,11 +313,11 @@ ulonglong FUN_140001180(undefined8 param_1, undefined8 param_2...) {
 
 > **Evidence Link:**
 
-![screenshots22](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/22Ghidra02.png)
+ ![screenshots22](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/22Ghidra02.png)
 
 Ghidra’s high-level descompilation structuralizes the initial assembly block. It maps stack pointer variable initializations alongside automated `GetStartupInfoA` acquisition queries used to verify if execution parameters were altered by debug environments.
 
-### 4.2. Control Flow Graph Topology (CFG)
+### 0x04.2. Control Flow Graph Topology (CFG)
 
 ```
              [Initial Entry Block]
@@ -334,7 +335,7 @@ Ghidra’s high-level descompilation structuralizes the initial assembly block. 
 
 > **Evidence Link:** 
 
-![screenshots23](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/23Ghidra03.png)
+ ![screenshots23](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/23Ghidra03.png)
 
 The **Function Graph** visualizes the physical splitting points of execution branches:
 
@@ -345,11 +346,11 @@ The **Function Graph** visualizes the physical splitting points of execution bra
 
 ---
 
-## 5. BLUE TEAM TELEMETRY & MITIGATION ARCHITECTURE
+## 0x05. BLUE TEAM TELEMETRY & MITIGATION ARCHITECTURE
 
 To finalize the Purple Team workflow, the deployment behavior of this artifact was cross-examined against defensive infrastructure telemetry.
 
-### 5.1. Delivery Tracking (Apache Container Logs)
+### 0x05.1. Delivery Tracking (Apache Container Logs)
 
 The delivery vector simulates an internal network link leading to the staging area. Server monitoring tracked the acquisition request:
 
@@ -359,7 +360,7 @@ Plaintext
 172.20.0.1 - - [19/May/2026:15:31:02 -0300] "GET /phishing/Medidas_Paco_De_Lucia_Oficial_1971.exe HTTP/1.1" 200 48293 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)..."
 ```
 
-### 5.2. CrowdSec Container Defense Integration
+### 0x05.2. CrowdSec Container Defense Integration
 
 The simulated infrastructure incorporates a **CrowdSec security agent** container mounted over Debian 12 to detect structural web exploitation or brute-force tracking used to locate payload repositories.
 
