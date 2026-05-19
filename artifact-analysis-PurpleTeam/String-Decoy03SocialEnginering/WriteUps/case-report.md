@@ -136,7 +136,7 @@ Snippet de código
 
  ![screenshots11](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/11pdf.png)
 
-!(screenshots12](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/12pdf.png)
+ ![screenshots12](https://github.com/edenzafire/Low-Level-Security/blob/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering/screenshots/12pdf.png)
 
 Snippet de código
 
