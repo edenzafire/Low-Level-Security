@@ -45,11 +45,13 @@ flowchart TD
 📂 Repository Directory Structure
 
 ## String-Decoy03SocialEnginering/
+```
 >├── docs/                   # Additional documentation, flowcharts, and technical specifications
 >├── src/                    # Source code files (Loader, Python encryptor, Linux debug stub)
 >├── screenshots/            # Chronological lab evidence logs (01 to 23)
 >├── WriteUps/               # Detailed, technical step-by-step forensic case reports
 └── README.md               # Welcome portal and project map (This file)
+```
 
 
 ## 🔬 Core Analysis Milestones Demonstrated
