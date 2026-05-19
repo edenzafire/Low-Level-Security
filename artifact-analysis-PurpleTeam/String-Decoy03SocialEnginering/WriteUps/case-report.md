@@ -12,7 +12,7 @@
 
 This report details the technical analysis of a stealthy stage-1 loader utilized during a simulated social engineering campaign themed around historical flamenco luthiery ("Medidas Paco De Lucía 1971").
 
-⚔️ Purple Team Lifecycle Bridges
+**⚔️ Purple Team Lifecycle Bridges**
 
 🔴 [Offensive Operations (Red Team):](https://github.com/edenzafire/Red_Team_Repo/tree/main/03_Social_Engineering) Phishing Campaign Implementation & Payload Delivery
 
