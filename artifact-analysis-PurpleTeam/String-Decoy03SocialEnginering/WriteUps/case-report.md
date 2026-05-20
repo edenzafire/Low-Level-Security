@@ -20,6 +20,7 @@ This report details the technical analysis of a stealthy stage-1 loader utilized
 
 The artifact was engineered as a dual-purpose payload: delivering an encrypted 64-bit Meterpreter shellcode via native Windows APIs while evading automated heuristic detection mechanisms. The simulation follows a strict Purple Team workflow, analyzing the offensive evasion vectors to optimize defensive infrastructure (CrowdSec containerized stack).
 
+```
 [Social Engineering Bait] 
           │
           ▼
@@ -27,8 +28,7 @@ The artifact was engineered as a dual-purpose payload: delivering an encrypted 6
                                              │
                                              ▼
 [Established Reverse Shell] ◄─── [Dynamic Memory XOR Decryption]
-
-
+```
 ---
 
 ## 0x01. STATIC TRIAGE & ARCHITECTURAL RECONNAISSANCE
