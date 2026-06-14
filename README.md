@@ -35,8 +35,8 @@ Para facilitar a navegação, os projetos estão categorizados por domínio téc
 
 | Diretório | Descrição |
 | :--- | :--- |
-| **[`artifact-analysis/`](./artifact-analysis)** | Engenharia reversa de binários e análise de comportamento de payloads. |
-| **[`ia32-memory-toolkit/`](./ia32-memory-toolkit)** | Ferramentas e estudos sobre manipulação de memória em arquitetura x86. |
+| **[`artifact-analysis-PurpleTeam`](https://github.com/edenzafire/Low-Level-Security/tree/main/artifact-analysis-PurpleTeam)** | Diretório principal, onde acontece a ligação para o portfólio PurpleTeam  |
+| **[`ia32-memory-toolkit/`](https://github.com/edenzafire/Low-Level-Security/tree/main/assembly/ia32-memory-toolkit)** | Ferramentas e estudos sobre manipulação de memória em arquitetura x86, prática do curso realizado na mooc NouIntuit Russa. |
 | **[`research-lab/`](./research-lab)** | Experimentos fundamentais em ASM, C/C++, Rust e COBOL. |
 | **[`docs/`](./docs)** | Diagramas de arquitetura, anotações de debug e whitepapers técnicos. |
 
