@@ -23,6 +23,13 @@ Neste repositório, os artefatos desenvolvidos no **Red Team** são dissecados p
 
 ---
 
+<p align="center">
+  <a href="https://github.com/edenzafire/Portfolio_pentest">
+    <img src="images/capa.png" alt="Capa do Portfólio Pentest" style="border-radius:50px; border:3px solid red;" />
+  </a>
+</p>
+
+
 ## 📂 Estrutura de Organização
 Para facilitar a navegação, os projetos estão categorizados por domínio técnico:
 
