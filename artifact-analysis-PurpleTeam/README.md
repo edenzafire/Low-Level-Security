@@ -20,6 +20,13 @@ Para cada artefato, seguimos um fluxo de perícia padrão:
 
 ---
 
+<p align="center">
+  <a href="https://github.com/edenzafire/Portfolio_pentest">
+    <img src="images/capa.png" alt="Capa do Portfólio Pentest" style="border-radius:50px; border:3px solid red;" />
+  </a>
+</p>
+
+
 ## 🔬 Artefatos em Destaque
 
 | Caso | Artefato | Técnica Principal | Status |
