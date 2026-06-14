@@ -31,7 +31,7 @@ Para cada artefato, seguimos um fluxo de perícia padrão:
 
 | Caso | Artefato | Técnica Principal | Status |
 | :--- | :--- | :--- | :--- |
-| **#01** | [Luthieria Dropper](./case-luthieria-dropper) | XOR Encoding & HTML Smuggling | ✅ Concluído |
+| **#01** | [Luthieria Dropper](https://github.com/edenzafire/Low-Level-Security/tree/main/artifact-analysis-PurpleTeam/String-Decoy03SocialEnginering) | XOR Encoding & HTML Smuggling | ✅ Concluído |
 
 
 ---
