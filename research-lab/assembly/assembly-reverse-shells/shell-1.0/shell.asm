@@ -1,7 +1,7 @@
 ; ============================================================================
 ; ASSEMBLY REVERSE SHELL 1.0 - WINDOWS X64
-; Autor: [Seu Nome]
-; Data: 2026-09-17
+; Autor: Eden Zafire
+; Data: 2026-09
 ; Descrição: Shell reverso básico usando Winsock2 + CreateProcess
 ; Compilação: nasm -f win64 shell.asm -o shell.obj && 
 ;             link /SUBSYSTEM:CONSOLE shell.obj ws2_32.lib
